@@ -37,12 +37,12 @@ export default function LoginPage() {
               >
                 Cadastrar
               </Link>
-              <button 
-                type="button"
-                className="bg-[#52ad1c] text-white font-medium py-2 rounded-lg hover:bg-green-600 transition-colors shadow-sm"
+              <Link 
+                href="/home"
+                className="bg-[#52ad1c] text-white font-medium py-2 rounded-lg hover:bg-green-600 transition-colors shadow-sm text-center"
               >
                 Login
-              </button>
+              </Link>
             </div>
           </form>
         </div>

@@ -1,36 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Projeto QualCheck
 
-## Getting Started
+## Instruções Gerais
 
-First, run the development server:
+Para executar favor utilizar o gerenciador de pacotes pnpm (pode ser instalado pelo próprio npm - npm i pnpm). Na primeira vez instalando o projeto é necessário instalar as dependências, o que pode ser feito com o comando `pnpm i`, fique atento para os builds extras do next, talvez seja necessário executar o comando `pnpm approve-builds`, leita atentamente as instruções para aceitar os builds extras gerados pela primeira instalação. Para iniciar o ambiente de desenvolvimento para testes utilize o comando `pnpm dev`.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Navegue até a página [http://localhost:3000](http://localhost:3000) caso a execução no terminal não tenha gerado nenhum erro. O desenvolvimento pode ser feito normalmente nas páginas e componentes da aplicação.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> [!WARNING]
+ ATENÇÃO! Favor subir todas as alterações para a branch dev para que possam ser mesclados e enviados para o remote do gitlab, caso contrário não será possível atualizar o código em produção para avaliação do projeto!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O projeto está hosteado atualmente no Vercel e pode ser acessado no seguinte [link](https://projeto-ti-drab.vercel.app/). O repositório que está conectado ao Vercel é o gitlab, favor siga corretamente as instruções de envio de alterações de código.

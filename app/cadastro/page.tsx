@@ -87,12 +87,12 @@ export default function CadastroPage() {
               >
                 Cancelar
               </Link>
-              <button 
-                type="button"
-                className="bg-[#52ad1c] text-white font-medium py-2 rounded-lg hover:bg-green-600 transition-colors shadow-sm"
+              <Link 
+                href="/home"
+                className="bg-[#52ad1c] text-white font-medium py-2 rounded-lg hover:bg-green-600 transition-colors shadow-sm text-center"
               >
                 Cadastrar
-              </button>
+              </Link>
             </div>
           </form>
         </div>
