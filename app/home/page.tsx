@@ -1,19 +1,23 @@
-import Link from 'next/link';
-import { ClipboardList, AlertTriangle, ChevronRight, Clock } from 'lucide-react';
-import AppShell from '../../components/AppShell';
-import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link'
+import { ClipboardList, AlertTriangle, ChevronRight, Clock } from 'lucide-react'
+import AppShell from '../../components/AppShell'
+import { createClient } from '@/lib/supabase/server'
 
 export default async function HomePage() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
 
-  const { data: profile } = user
-    ? await supabase.from('profiles').select('nome, setor, username').eq('id', user.id).single()
-    : { data: null };
+  const [{ data: profile }, { count: checklistCount }, { count: ncCount }] = await Promise.all([
+    user
+      ? supabase.from('profiles').select('nome, setor').eq('id', user.id).single()
+      : Promise.resolve({ data: null }),
+    supabase.from('checklists').select('*', { count: 'exact', head: true }).eq('status', 'Aberto'),
+    supabase.from('nao_conformidades').select('*', { count: 'exact', head: true }).eq('status', 'Aberto'),
+  ])
 
-  const nome = profile?.nome ?? 'Usuário';
-  const setor = profile?.setor ?? '—';
-  const idDisplay = user?.id.slice(0, 7).toUpperCase() ?? '0000000';
+  const nome = profile?.nome ?? 'Usuário'
+  const setor = profile?.setor ?? '—'
+  const idDisplay = user?.id.slice(0, 7).toUpperCase() ?? '0000000'
 
   return (
     <AppShell title="Home" description="Acompanhe suas checklists e não conformidades mais recentes.">
@@ -36,7 +40,8 @@ export default async function HomePage() {
                 <p className="text-xs uppercase tracking-[0.3em] text-[#285ebb] font-semibold">Checklist</p>
               </div>
               <p className="text-2xl font-bold text-slate-900">
-                3 <span className="text-base font-semibold text-slate-500">em aberto</span>
+                {checklistCount ?? 0}{' '}
+                <span className="text-base font-semibold text-slate-500">em aberto</span>
               </p>
             </div>
             <div className="rounded-3xl border border-orange-100 bg-orange-50 p-4">
@@ -45,7 +50,8 @@ export default async function HomePage() {
                 <p className="text-xs uppercase tracking-[0.3em] text-orange-500 font-semibold">Não conf.</p>
               </div>
               <p className="text-2xl font-bold text-slate-900">
-                2 <span className="text-base font-semibold text-slate-500">abertas</span>
+                {ncCount ?? 0}{' '}
+                <span className="text-base font-semibold text-slate-500">abertas</span>
               </p>
             </div>
           </div>
@@ -84,5 +90,5 @@ export default async function HomePage() {
         </Link>
       </div>
     </AppShell>
-  );
+  )
 }
