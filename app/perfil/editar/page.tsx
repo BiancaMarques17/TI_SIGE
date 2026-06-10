@@ -3,7 +3,7 @@ import AppShell from '../../../components/AppShell';
 
 export default function EditarPerfilPage() {
   return (
-    <AppShell title="Editar Perfil" description="Atualize seus dados de usuário e contato.">
+    <AppShell title="Editar Perfil" description="Atualize seus dados de usuário e contato." backHref="/perfil">
       <div className="rounded-[30px] bg-white/95 p-5 shadow-sm">
         <form className="space-y-4">
           <label className="flex flex-col text-sm text-slate-700">
